@@ -10,10 +10,13 @@ export const getPosts = async () => {
     return []
 }
 
-export const getPostBySlug = async (id) => {
-
-    //TODO: BUSCAR UM POST EM ESPECIFICO.
-    //const {data} = await api.get(`/post?id=eq.${id}`)
-
-    return {}
-}
+    export const getPostBySlug = async (id) => {
+        try {
+            const { data } = await api.get(`/post?id=eq.${id}`);
+            return data; 
+        } catch (error) {
+            console.error("Erro ao buscar o post por slug:", error);
+            return null; 
+        }
+    }
+    
